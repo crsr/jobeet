@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+  <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+  <link href="{{ asset('css/bootstrap.css') }}" type="text/css" rel="stylesheet" />   
+ {% endblock %}
+{% block body %}
+{% block navbar %}
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                    
+                    <li><a href="{{ path('job_index') }}">Manage job</a></li>
+                    <li><a href="{{ path('category_index') }}">Manage category</a></li>
+                    <li><a href="{{ path('affiliate_index') }}">Manage affiliate</a></li>
+                </ul>
+            </div>
+        </nav>
+    {% endblock %}
+<div class = "container col-md-3 col-sm-offset-4">
+        <h1>Category list</h1>
+    <table class="table table-reflow" id="joblist_table">
+        <thead>
+            <tr>
+                <th>Id category</th>
+                <th>Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for category in categories %}
+            <tr>
+                <td><a href="{{ path('category_show', { 'id': category.idCategory }) }}">{{ category.idCategory }}</a></td>
+                <td>{{ category.name }}</td>
+                <td>
+                    <ul>
+                    
+                            <a href="{{ path('category_show', { 'id': category.idCategory }) }}"><button type="button" class="btn btn-success">Show</button></a><br><br>
+                       
+                            <a href="{{ path('category_edit', { 'id': category.idCategory }) }}"><button type="button" class="btn btn-success">Edit</button></a>
+               
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+  
+            <a href="{{ path('category_new') }}"><button type="button" class="btn btn-success">Create new entry</button></a>
+</div>
+{% endblock %}

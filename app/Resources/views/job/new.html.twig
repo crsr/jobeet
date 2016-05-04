@@ -1,0 +1,120 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+  <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+  <link href="{{ asset('css/bootstrap.css') }}" type="text/css" rel="stylesheet" />
+        
+ {% endblock %}
+{% block body %}
+
+    <h1>Job creation</h1>
+
+  
+<div class="col-sm-6">
+
+    {{ form_start(form) }}
+    <div class="form-group form-group-lg">
+      <label class="col-sm-2 control-label text-center" for="lg">Type</label>
+      <div class="col-sm-10">
+        {{ form_widget(form.type, {'attr': {'class': 'form-control'}}) }}
+      </div>
+    </div>
+     <div class="form-group form-group-lg">
+      <label class="col-sm-2 control-label text-center" for="lg">Company</label>
+      <div class="col-sm-10">
+         {{ form_widget(form.company, {'attr': {'class': 'form-control'}}) }}
+      </div>
+    </div>
+     <div class="form-group form-group-lg">
+      <label class="col-sm-2 control-label text-center" for="lg">Logo</label>
+      <div class="col-sm-10">
+        {{ form_widget(form.logo, {'attr': {'class': 'form-control'}}) }}
+      </div>
+    </div>
+     <div class="form-group form-group-lg">
+      <label class="col-sm-2 control-label text-center" for="lg">Url</label>
+      <div class="col-sm-10">
+        {{ form_widget(form.url, {'attr': {'class': 'form-control'}}) }}
+      </div>
+    </div>
+   
+     <div class="form-group form-group-lg">
+      <label class="col-sm-2 control-label text-center" for="lg">Position</label>
+      <div class="col-sm-10">
+        {{ form_widget(form.position, {'attr': {'class': 'form-control'}}) }}
+      </div>
+    </div>
+     <div class="form-group form-group-lg">
+      <label class="col-sm-2 control-label text-center" for="lg">Location</label>
+      <div class="col-sm-10">
+        {{ form_widget(form.location, {'attr': {'class': 'form-control'}}) }}
+      </div>
+    </div>
+     <div class="form-group form-group-lg">
+      <label class="col-sm-2 control-label text-center" for="lg">Description</label>
+      <div class="col-sm-10">
+        {{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
+      </div>
+    </div>
+     <div class="form-group form-group-lg">
+      <label class="col-sm-2 control-label text-center" for="lg">How to apply</label>
+      <div class="col-sm-10">
+        {{ form_widget(form.howToApply, {'attr': {'class': 'form-control'}}) }}
+      </div>
+    </div>
+     <div class="form-group form-group-lg">
+      <label class="col-sm-2 control-label text-center" for="lg">Token</label>
+      <div class="col-sm-10">
+        {{ form_widget(form.token, {'attr': {'class': 'form-control'}}) }}
+      </div>
+    </div>
+     <div class="form-group form-group-lg">
+      <label class="col-sm-2 control-label text-center" for="lg">Is public</label>
+      <div class="col-sm-10">
+        {{ form_widget(form.isPublic, {'attr': {'class': 'form-control'}}) }}
+      </div>
+    </div>
+     <div class="form-group form-group-lg">
+      <label class="col-sm-2 control-label text-center" for="lg">Is activated</label>
+      <div class="col-sm-10">
+        {{ form_widget(form.isActivated, {'attr': {'class': 'form-control'}}) }}
+      </div>
+    </div>
+     <div class="form-group form-group-lg">
+      <label class="col-sm-2 control-label text-center" for="lg">Email</label>
+      <div class="col-sm-10">
+        {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+      </div>
+    </div>
+     <div class="form-group form-group-lg">
+      <label class="col-sm-2 control-label text-center" for="lg">Expires at</label>
+      <div class="col-sm-10">
+        {{ form_widget(form.expirestAt, {'select' : 'job_expirestAt_date_month' , 'attr': {'class': 'btn btn-default dropdown-toggle'}}) }}
+      </div>
+    </div>
+     <div class="form-group form-group-lg">
+      <label class="col-sm-2 control-label text-center" for="lg">Created at</label>
+      <div class="col-sm-10">
+        {{ form_widget(form.createdAt,{'select' : 'job_createdAt_date_month' , 'attr': {'class': 'btn btn-default dropdown-toggle'}}) }}
+      </div>
+    </div>
+     <div class="form-group form-group-lg">
+      <label class="col-sm-2 control-label text-center" for="lg">Updated at</label>
+      <div class="col-sm-10">
+        {{ form_widget(form.updatedAt, {'select' : 'job_updatedAt_date_month' , 'attr': {'class': 'btn btn-default dropdown-toggle'}}) }}
+      </div>
+    </div>
+     <div class="form-group form-group-lg">
+      <label class="col-sm-2 control-label text-center" for="lg">Id Category</label>
+      <div class="col-sm-10">
+        {{ form_widget(form.idCategory, {'attr': {'class': 'form-control'}}) }}
+      </div>
+    </div><br><br>
+    <div class="col-sm-6 text-center"><br><br>
+        <input type="submit" class="btn btn-info" value="Save job" />
+        
+    {{ form_end(form) }}
+
+
+ <a href="{{ path('job_index') }}"><button type="button" class="btn btn-info">Back to list</button></a>
+  
+{% endblock %}

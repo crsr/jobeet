@@ -1,0 +1,42 @@
+AppBundle\Entity\Categoryaffiliate:
+    type: entity
+    table: categoryaffiliate
+    indexes:
+        id_category:
+            columns:
+                - id_category
+        id_affiliate:
+            columns:
+                - id_affiliate
+    id:
+        idCategoryaffiliate:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: id_categoryaffiliate
+            generator:
+                strategy: IDENTITY
+    manyToOne:
+        idAffiliate:
+            targetEntity: Affiliate
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_affiliate:
+                    referencedColumnName: id_affiliate
+            orphanRemoval: false
+        idCategory:
+            targetEntity: Category
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_category:
+                    referencedColumnName: id_category
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    <link href="{{ asset('css/bootstrap.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('css/style.css') }}" type="text/css" rel="stylesheet" />
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
+    
+{% endblock %}
+
+{% block body %}
+<body class="background_updated ">
+
+<div class="container">
+    <div class="table-responsive">
+            <h1>Posted jobs by employeers</h1>
+        <table class="table table_update" id="joblist_table">
+            <thead>
+                <tr>
+               <!--      <th>Id job</th> -->
+                    <th>Type</th>
+                    <th>Company</th>
+                    <th>Logo</th>
+                <!--     <th>Url</th> -->
+                    <th>Position</th>
+                    <th>Location</th>
+                    <th>Description</th>
+                    <th>How to apply</th>
+                    <th>Email</th>
+              <!--       <th>Expirest at</th> -->
+                 <!--    <th>Created at</th> -->
+                   <!--  <th class>Actions</th> -->
+                </tr>
+            </thead>
+            <tbody>
+                {% for job in jobs %}
+                    <tr class='text-center'>
+                       <!--  <td><a href="{{ path('job_show', { 'id': job.idJob }) }}">{{ job.idJob }}</a></td> -->
+                        <td>{{ job.type }}</td>
+                        <td>{{ job.company }}</td>
+                        <td>{{ job.logo }}</td>
+                       <!--  <td>{{ job.url }}</td> -->
+                        <td>{{ job.position }}</td>
+                        <td>{{ job.location }}</td>
+                        <td>{{ job.description }}</td>
+                        <td>{{ job.howToApply }}<button type="button" class="btn btn-success">Apply here</button>  <!-- <form method="post" name="how_to_apply">
+                         <input type="submit" class="btn btn-success how_to_apply" value="Apply here">
+                         <input type="hidden" type="text" class="btn btn-success how_to_apply" name="emailsend" value="{{ job.email }}">
+
+                        </form> --></td>
+                        <td>{{ job.email }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+<!-- <div class="row">
+  <div class="col-md-5 col-md-offset-5"><a href="{{ path('job_new') }}"><button type="button" class="btn  btn-success">Create a new entry</button></a></div>
+ 
+</div> -->
+ 
+</body>
+
+{% endblock %}
+

@@ -1,0 +1,115 @@
+AppBundle\Entity\Job:
+    type: entity
+    table: job
+    indexes:
+        id_category:
+            columns:
+                - id_category
+    uniqueConstraints:
+        token:
+            columns:
+                - token
+    id:
+        idJob:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: id_job
+            generator:
+                strategy: IDENTITY
+    fields:
+        type:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+        company:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+        logo:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+        url:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+        position:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+        location:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+        description:
+            type: text
+            nullable: false
+            length: 65535
+            options:
+                fixed: false
+        howToApply:
+            type: text
+            nullable: false
+            length: 65535
+            options:
+                fixed: false
+            column: how_to_apply
+        token:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+        isPublic:
+            type: boolean
+            nullable: true
+            column: is_public
+        isActivated:
+            type: boolean
+            nullable: true
+            column: is_activated
+        email:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+        expirestAt:
+            type: datetime
+            nullable: false
+            column: expirest_at
+        createdAt:
+            type: datetime
+            nullable: false
+            column: created_at
+        updatedAt:
+            type: datetime
+            nullable: true
+            column: updated_at
+    manyToOne:
+        idCategory:
+            targetEntity: Category
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_category:
+                    referencedColumnName: id_category
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

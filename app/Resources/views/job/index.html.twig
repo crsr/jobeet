@@ -1,0 +1,86 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    <link href="{{ asset('css/bootstrap.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('css/style.css') }}" type="text/css" rel="stylesheet" />
+    
+{% endblock %}
+
+{% block body %}
+<body class="background_updated ">
+
+
+    <h1>Job list</h1>
+    {% block navbar %}
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                    
+                    <li><a href="{{ path('job_index') }}">Manage job</a></li>
+                    <li><a href="{{ path('category_index') }}">Manage category</a></li>
+                    <li><a href="{{ path('affiliate_index') }}">Manage affiliate</a></li>
+                </ul>
+            </div>
+        </nav>
+    {% endblock %}
+
+    <div class="table-responsive">
+        <table class="table table_update" id="joblist_table">
+            <thead>
+                <tr>
+               <!--      <th>Id job</th> -->
+                    <th>Type</th>
+                    <th>Company</th>
+                   
+                    <th>Url</th>
+                     <th>Logo</th>
+                    <th>Position</th>
+                    <th>Location</th>
+                    <th>Description</th>
+                    <th>How to apply</th>
+                    <th>Email</th>
+              <!--       <th>Expirest at</th> -->
+                 <!--    <th>Created at</th> -->
+                    <th class>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for job in jobs %}
+                    <tr class='text-center'>
+                       <!--  <td><a href="{{ path('job_show', { 'id': job.idJob }) }}">{{ job.idJob }}</a></td> -->
+                        <td>{{ job.type }}</td>
+                        <td>{{ job.company }}</td>
+                    
+                        <td><a href="{{ job.url }}" target="_blank">Visit out site here</a></td> 
+                        <td> <img src="../../../Images/{{job.logo}}" alt="Smiley face" class="logo"> </td>
+                        <td>{{ job.position }}</td>
+                        <td>{{ job.location }}</td>
+                        <td> <a href="{{ path('job_description') }}"><button type="button" class="btn btn-success">See description</button></a>{{ job.description }}</td>
+                        <td><!-- {{ job.howToApply }} -->
+                            <form role="form"  method="post" enctype="multipart/form-data">
+                                <div class="form-group">
+                                <input class="form-conrol" type="file" name="fileToUpload" id="fileToUpload">
+                                <input class="form-conrol" type="submit" value="Sent CV to company" name="sentcv"></div>
+                            </form></td>
+                        <td>{{ job.email }}</td>
+       <!--                  <td>{% if job.expirestAt %}{{ job.expirestAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                        <td>{% if job.createdAt %}{{ job.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td> -->
+
+                        <td class='text-center'>
+                            <a href="{{ path('job_show', { 'id': job.idJob }) }}"><button type="button" class="btn btn-success">Show</button></a><br><br>
+                            
+                            <a href="{{ path('job_edit', { 'id': job.idJob }) }}"><button type="button" class="btn  btn-success">Edit job  </button></a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+<div class="row">
+  <div class="col-md-5 col-md-offset-5"><a href="{{ path('job_new') }}"><button type="button" class="btn  btn-success">Create a new entry</button></a></div>
+ 
+</div>
+ 
+</body>
+{% endblock %}

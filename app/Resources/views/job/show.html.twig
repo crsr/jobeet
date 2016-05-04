@@ -1,0 +1,93 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+  <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+  <link href="{{ asset('css/bootstrap.css') }}" type="text/css" rel="stylesheet" />    
+ {% endblock %}
+
+{% block body %}
+
+<div class = "container col-md-3 col-sm-offset-4">
+    <h1>Job</h1>
+    <table class="table-stripped" >
+        <tbody>
+            <tr class="info">
+                <th>Idjob</th>
+                <td >{{ job.idJob }}</td>
+            </tr>
+            <tr>
+                <th>Type</th>
+                <td>{{ job.type }}</td>
+            </tr>
+            <tr class="info">
+                <th>Company</th>
+                <td>{{ job.company }}</td>
+            </tr>
+            <tr>
+                <th>Logo</th>
+                <td>{{ job.logo }}</td>
+            </tr>
+            <tr class="info">
+                <th>Url</th>
+                <td>{{ job.url }}</td>
+            </tr>
+            <tr>
+                <th>Position</th>
+                <td>{{ job.position }}</td>
+            </tr>
+            <tr class="info">
+                <th>Location</th>
+                <td>{{ job.location }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ job.description }}</td>
+            </tr>
+            <tr class="info">
+                <th>Howtoapply</th>
+                <td>{{ job.howToApply }}</td>
+            </tr>
+            <tr >
+                <th>Token</th>
+                <td>{{ job.token }}</td>
+            </tr>
+            <tr class="info">
+                <th>Ispublic</th>
+                <td>{% if job.isPublic %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Isactivated</th>
+                <td>{% if job.isActivated %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr class="info">
+                <th>Email</th>
+                <td>{{ job.email }}</td>
+            </tr>
+            <tr>
+                <th>Expirestat</th>
+                <td>{% if job.expirestAt %}{{ job.expirestAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr class="info">
+                <th>Createdat</th>
+                <td>{% if job.createdAt %}{{ job.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Updatedat</th>
+                <td>{% if job.updatedAt %}{{ job.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+  
+        
+            <a href="{{ path('job_index') }}"><button type="button" class="btn btn-success">Back to the list</button></a>
+     
+            <a href="{{ path('job_edit', { 'id': job.idJob }) }}"><button type="button" class="btn btn-success">Edit</button></a>
+            <br><br>
+            {{ form_start(delete_form) }}
+                <input type="submit" class="btn btn-danger" value="Delete">
+            {{ form_end(delete_form) }}
+      
+
+        </div>
+{% endblock %}

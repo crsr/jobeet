@@ -1,0 +1,36 @@
+{% extends "UsersBundle::layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+{% block sheets %} 
+  <link href="{{ asset('css/bootstrap.css') }}" type="text/css" rel="stylesheet" />
+  <link href="{{ asset('css/style.css') }}" type="text/css" rel="stylesheet" />      
+{% endblock sheets %}
+{% block fos_user_content %}
+{% if error %}
+    <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+{% endif %}
+
+
+<div class="container">
+    <a rel="home" href="#" title="Buy Sell Rent Everyting">
+        <img class="img-responsive size_img"  src="{{ asset('images/logo.png') }}">
+    </a>
+</div>
+{% block break %} <br><br> {% endblock %}
+<div class="col-sm-3 col-sm-offset-4">
+<form class="form-signin" action="{{ path("fos_user_security_check") }}" method="post">
+    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+
+    <label for="username">{{ 'security.login.username'|trans }}</label>
+    <input  class="form-control" type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
+
+    <label for="password">{{ 'security.login.password'|trans }}</label>
+    <input  class="form-control" type="password" id="password" name="_password" required="required" />
+
+    <input   type="checkbox" id="remember_me" name="_remember_me" value="on" />
+    <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
+
+    <input  class="form-control btn btn-info" type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
+</form>
+<div>
+{% endblock fos_user_content %}

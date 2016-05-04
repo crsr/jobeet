@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Categoryaffiliate list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Idcategoryaffiliate</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for categoryaffiliate in categoryaffiliates %}
+            <tr>
+                <td><a href="{{ path('categoryaffiliate_show', { 'id': categoryaffiliate.idCategoryaffiliate }) }}">{{ categoryaffiliate.idCategoryaffiliate }}</a></td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('categoryaffiliate_show', { 'id': categoryaffiliate.idCategoryaffiliate }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('categoryaffiliate_edit', { 'id': categoryaffiliate.idCategoryaffiliate }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('categoryaffiliate_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}
